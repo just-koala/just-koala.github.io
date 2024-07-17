@@ -54,11 +54,6 @@ std::string generate_post(const json &issue)
 // Main function
 int main()
 {
-    if (GITHUB_TOKEN.empty())
-    {
-        std::cerr << "Error: GITHUB_TOKEN is empty." << std::endl;
-        return 1;
-    }
 
     json issues = fetch_issues(GITHUB_REPO);
     std::ofstream posts_dir("posts");
