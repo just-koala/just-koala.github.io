@@ -18,23 +18,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1'
       - name: Install Dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libcurl4-openssl-dev libhtmlcxx-dev nlohmann-json3-dev
-          sudo apt-get install -y cmake
-      - name: Install CPR
-        run: |
-          git clone https://github.com/whoshuu/cpr.git
-          cd cpr
-          cmake .
-          make
-          sudo make install
-          sudo ldconfig
-      - name: Compile Fetch Issues
-        run: g++ -o fetch_issues fetch_issues.cpp -lcpr -lhtmlcxx
+        run: dotnet add package Newtonsoft.Json
+        run: dotnet add package HtmlAgilityPack
       - name: Generate Site
-        run: ./fetch_issues
+        run: dotnet run FetchIssues.cs
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
