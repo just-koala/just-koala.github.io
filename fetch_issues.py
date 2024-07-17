@@ -4,13 +4,13 @@ from jinja2 import Template
 
 # Configuration
 GITHUB_REPO = "just-koala/just-koala.github.io" 
-GITHUB_TOKEN = os.getenv("KOALA_TOKEN")
+KOALA_TOKEN = os.getenv("KOALA_TOKEN")
 
 # Fetch issues from GitHub
 def fetch_issues(repo):
     url = f"https://api.github.com/repos/{repo}/issues"
     headers = {
-        "Authorization": f"token {GITHUB_TOKEN}"
+        "Authorization": f"token {KOALA_TOKEN}"
     }
     response = requests.get(url, headers=headers)
     response.raise_for_status()
