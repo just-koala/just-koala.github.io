@@ -17,24 +17,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-
+      - uses: actions/checkout@v2
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: "8.x"
-
-      - name: Install dotnet-script
-        run: dotnet tool install -g dotnet-script
-
+          dotnet-version: "3.1"
       - name: Install Dependencies
-        run: |
-          dotnet add package Newtonsoft.Json
-          dotnet add package HtmlAgilityPack
-
+        run: dotnet add package Newtonsoft.Json
+      - name: Install Dependencies
+        run: dotnet add package HtmlAgilityPack
       - name: Generate Site
-        run: dotnet script fetch_issues.cs
-
+        run: dotnet run FetchIssues.cs
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
