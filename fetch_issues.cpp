@@ -12,11 +12,11 @@ using json = nlohmann::json;
 const std::string GITHUB_REPO = "just-koala/just-koala.github.io";
 const char *GITHUB_TOKEN_ENV = std::getenv("KOALA_TOKEN");
 
-if (GITHUB_TOKEN_ENV == nullptr)
-{
-    std::cerr << "Error: GITHUB_TOKEN environment variable is not set." << std::endl;
-    return 1;
-}
+// if (GITHUB_TOKEN_ENV == nullptr)
+//{
+//     std::cerr << "Error: GITHUB_TOKEN environment variable is not set." << std::endl;
+//     return 1;
+// }
 const std::string GITHUB_TOKEN = GITHUB_TOKEN_ENV;
 
 // Fetch issues from GitHub
