@@ -10,7 +10,14 @@ using json = nlohmann::json;
 
 // configurations
 const std::string GITHUB_REPO = "just-koala/just-koala.github.io";
-const std::string GITHUB_TOKEN = getenv("KOALA_TOKEN");
+const char *GITHUB_TOKEN_ENV = std::getenv("KOALA_TOKEN");
+
+if (GITHUB_TOKEN_ENV == nullptr)
+{
+    std::cerr << "Error: GITHUB_TOKEN environment variable is not set." << std::endl;
+    return 1;
+}
+const std::string GITHUB_TOKEN = GITHUB_TOKEN_ENV;
 
 // Fetch issues from GitHub
 json fetch_issues(const std::string &repo)
@@ -47,6 +54,12 @@ std::string generate_post(const json &issue)
 // Main function
 int main()
 {
+    if (GITHUB_TOKEN.empty())
+    {
+        std::cerr << "Error: GITHUB_TOKEN is empty." << std::endl;
+        return 1;
+    }
+
     json issues = fetch_issues(GITHUB_REPO);
     std::ofstream posts_dir("posts");
 
