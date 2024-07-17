@@ -17,13 +17,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
+      - uses: actions/checkout@v4
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: "8"
+          dotnet-version: "8.x"
       - name: Install Dependencies
-        run: dotnet add package Newtonsoft.Json, HtmlAgilityPack
+        run: dotnet add package Newtonsoft.Json --version 12.0.1
+      - name: Install Dependencies
+        run: dotnet add package HtmlAgilityPack
       - name: Generate Site
         run: dotnet run fetch_issues.cs
       - name: Deploy
