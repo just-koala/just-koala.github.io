@@ -32,7 +32,7 @@ jobs:
           sudo make install
           sudo ldconfig
       - name: Compile Fetch Issues
-        run: g++ -o fetch_issues fetch_issues.cpp -lcpr -lhtmlcxx -ljson
+        run: g++ -o fetch_issues fetch_issues.cpp -lcpr -lhtmlcxx
       - name: Generate Site
         run: LD_LIBRARY_PATH=/usr/local/lib ./fetch_issues
       - name: Deploy
