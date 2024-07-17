@@ -29,8 +29,8 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          dotnet script add package Newtonsoft.Json
-          dotnet script add package HtmlAgilityPack
+          dotnet add package Newtonsoft.Json
+          dotnet add package HtmlAgilityPack
 
       - name: Generate Site
         run: dotnet script fetch_issues.cs
