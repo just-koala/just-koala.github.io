@@ -23,8 +23,7 @@ jobs:
         with:
           dotnet-version: "3.1"
       - name: Install Dependencies
-        run: dotnet add package Newtonsoft.Json
-
+        run: dotnet add package Newtonsoft.Json, HtmlAgilityPack
       - name: Generate Site
         run: dotnet run FetchIssues.cs
       - name: Deploy
