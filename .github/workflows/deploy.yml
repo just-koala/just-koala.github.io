@@ -19,7 +19,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install Dependencies
-        run: sudo apt-get install -y libcurl4-openssl-dev libhtmlcxx-dev nlohmann-json3-dev
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libhtmlcxx-dev nlohmann-json3-dev
+          sudo apt-get install -y cmake
+      - name: Install CPR
+        run: |
+          git clone https://github.com/whoshuu/cpr.git
+          cd cpr
+          cmake .
+          make
+          sudo make install
       - name: Compile Fetch Issues
         run: g++ -o fetch_issues fetch_issues.cpp -lcpr -lhtmlcxx
       - name: Generate Site
