@@ -23,7 +23,7 @@ jobs:
         with:
           dotnet-version: "8.x"
       - name: Install Dependencies
-        run: dotnet add package Newtonsoft.Json --version 12.0.1
+        run: dotnet add package Newtonsoft.Json
       - name: Install Dependencies
         run: dotnet add package HtmlAgilityPack
       - name: Generate Site
