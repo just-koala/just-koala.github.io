@@ -29,10 +29,10 @@ jobs:
         run: dotnet tool install -g dotnet-script
 
       - name: Install Dependencies (Newtonsoft.Json)
-        run: dotnet add package Newtonsoft.Json
+        run: dotnet add package Newtonsoft.Json --project "/home/runner/work/just-koala.github.io/just-koala.github.io/""
 
       - name: Install Dependencies (HtmlAgilityPack)
-        run: dotnet add package HtmlAgilityPack
+        run: dotnet add package HtmlAgilityPack --project "/home/runner/work/just-koala.github.io/just-koala.github.io/""
 
       - name: Generate Site
         run: dotnet script fetch_issues.cs
