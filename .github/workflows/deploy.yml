@@ -30,10 +30,11 @@ jobs:
           cmake .
           make
           sudo make install
+          sudo ldconfig
       - name: Compile Fetch Issues
-        run: g++ -o fetch_issues fetch_issues.cpp -lcpr -lhtmlcxx
+        run: g++ -o fetch_issues fetch_issues.cpp -lcpr -lhtmlcxx -ljson
       - name: Generate Site
-        run: ./fetch_issues
+        run: LD_LIBRARY_PATH=/usr/local/lib ./fetch_issues
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
