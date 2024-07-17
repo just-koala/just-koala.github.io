@@ -28,10 +28,10 @@ jobs:
           pip install requests jinja2
       - name: Fetch and Generate Posts
         run: |
-          export GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          export GITHUB_TOKEN=${{ secrets.KOALA_TOKEN }}
           python fetch_issues.py
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.KOALA_TOKEN }}
           publish_dir: ./posts
