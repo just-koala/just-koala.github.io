@@ -7,7 +7,7 @@ using Newtonsoft.Json.Linq;
 using HtmlAgilityPack;
 
 // Configuration
-const string GITHUB_REPO = "your-username/your-repo-name";
+const string GITHUB_REPO = "just-koala/just-koala.github.io";
 string GITHUB_TOKEN = Environment.GetEnvironmentVariable("KOALA_TOKEN");
 
 // Fetch issues from GitHub
