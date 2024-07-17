@@ -17,22 +17,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v2
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: "8.x"
+          dotnet-version: "3.1"
 
       - name: Install dotnet-script
         run: dotnet tool install -g dotnet-script
 
-      - name: Install Dependencies (Newtonsoft.Json)
-        run: dotnet add package Newtonsoft.Json --project "/home/runner/work/just-koala.github.io/just-koala.github.io/"
-
-      - name: Install Dependencies (HtmlAgilityPack)
-        run: dotnet add package HtmlAgilityPack --project "/home/runner/work/just-koala.github.io/just-koala.github.io/"
+      - name: Install Dependencies
+        run: |
+          dotnet script add package Newtonsoft.Json
+          dotnet script add package HtmlAgilityPack
 
       - name: Generate Site
         run: dotnet script fetch_issues.cs
