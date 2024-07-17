@@ -4,34 +4,33 @@ on:
   push:
     branches:
       - main
-  issues:
-    types:
-      - opened
-      - edited
-  pull_request:
-    branches:
-      - main
+      - gh-pages
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v3
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
-          dotnet-version: "8.0"
-      - name: Install dotnet-script
-        run: dotnet tool install -g dotnet-script
-      - name: Install Dependencies
+          python-version: "3.x"
+
+      - name: Install dependencies
         run: |
-          dotnet script add package Newtonsoft.Json
-          dotnet script add package HtmlAgilityPack
-      - name: Generate Site
-        run: dotnet run FetchIssues.cs
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./posts
+          python -m pip install --upgrade pip
+          pip install jinja2 requests
+
+      - name: Fetch and generate website posts
+        run: python fetch_issues.py
+
+      - name: Deploy to GitHub Pages
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add _posts
+          git commit -m 'Deploy website posts'
+          git push origin gh-pages
