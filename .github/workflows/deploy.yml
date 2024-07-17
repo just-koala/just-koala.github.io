@@ -1,0 +1,31 @@
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - main
+  issues:
+    types:
+      - opened
+      - edited
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup C++ Environment
+        run: sudo apt-get install -y libcurl4-openssl-dev libhtmlcxx-dev
+      - name: Compile Fetch Issues
+        run: g++ -o fetch_issues fetch_issues.cpp -lcpr -lhtmlcxx
+      - name: Generate Site
+        run: ./fetch_issues
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./posts
