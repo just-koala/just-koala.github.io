@@ -37,3 +37,7 @@ jobs:
           git add posts/
           git commit -m "Update blog posts"
           git push
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "posts/."
