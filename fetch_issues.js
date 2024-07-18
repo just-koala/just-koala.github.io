@@ -1,6 +1,6 @@
-import { Octokit } from "@octokit/rest";
-import { existsSync, mkdirSync, writeFileSync } from 'fs';
-import path from 'path';
+const { Octokit } = require("@octokit/rest");
+const fs = require('fs');
+const path = require('path');
 
 // Configuration
 const GITHUB_TOKEN = process.env.MY_GITHUB_TOKEN;
