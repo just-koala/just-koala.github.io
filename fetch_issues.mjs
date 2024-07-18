@@ -4,7 +4,7 @@ import path from 'path';
 
 // Configuration
 const GITHUB_TOKEN = process.env.MY_GITHUB_TOKEN;
-const GITHUB_REPO = process.env.MY_GITHUB_REPO;
+const GITHUB_REPO = 'just-koala/just-koala.github.io';
 const [owner, repo] = GITHUB_REPO.split('/');
 
 // Initialize Octokit
