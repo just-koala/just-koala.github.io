@@ -34,6 +34,17 @@ jobs:
           git add posts/
           git commit -m "Update blog posts"
           git push
+
+  deploy:
+    needs: build
+
+    permissions:
+      pages: write
+      id-token: write
+
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
