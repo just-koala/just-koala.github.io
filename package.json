@@ -1,0 +1,11 @@
+{
+  "name": "github-pages-deploy",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node fetch_issues.mjs"
+  },
+  "dependencies": {
+    "@octokit/rest": "^18.0.12"
+  }
+}

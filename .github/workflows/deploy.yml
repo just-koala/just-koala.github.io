@@ -23,14 +23,14 @@ jobs:
         with:
           node-version: "14"
       - name: Install Dependencies
-        run: npm install @octokit/rest
+        run: npm install
       - name: Fetch and Generate Posts
         env:
           MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
-        run: node fetch_issues.js
+        run: node fetch_issues.mjs
       - name: Commit and Push Changes
         env:
-          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+          MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
