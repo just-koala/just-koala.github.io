@@ -8,9 +8,6 @@ on:
     types:
       - opened
       - edited
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build:
@@ -37,7 +34,17 @@ jobs:
           git add posts/
           git commit -m "Update blog posts"
           git push
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: "posts/."
+
+  deploy:
+    needs: build
+
+    environment:
+      name: github-pages
+      url: ${{ https://just-koala.github.io/ }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
