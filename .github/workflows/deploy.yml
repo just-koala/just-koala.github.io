@@ -40,7 +40,7 @@ jobs:
 
     environment:
       name: github-pages
-      url: ${{ https://just-koala.github.io/ }}
+      url: ${{ steps.deployment.outputs.page_url }}
 
     runs-on: ubuntu-latest
 
