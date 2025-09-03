@@ -9,5 +9,6 @@
     "UTC":10,
     "themeMode":"manual",
     "dayTheme":"github-light",
-    "nightTheme":"github-dark"
+    "nightTheme":"github-dark",
+    "bottomText":"Please indicate the source when reproducing"
 }
