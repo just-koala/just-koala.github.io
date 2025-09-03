@@ -2,5 +2,9 @@
     "title":"just koala's blog",
     "subTitle":"rebirth",
     "avatarUrl":"https://github.com/just-koala/just-koala/raw/main/src/assets/images/404.gif",
-    "GMEEK_VERSION":"last"
+    "GMEEK_VERSION":"last",
+    "startSite":"03/09/2025",
+    "onePageListNum":32,
+    "i18n":"EN",
+    "UTC":10
 }
