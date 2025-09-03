@@ -6,5 +6,8 @@
     "startSite":"09/03/2025",
     "onePageListNum":32,
     "i18n":"EN",
-    "UTC":10
+    "UTC":10,
+    "themeMode":"manual",
+    "dayTheme":"github-light",
+    "nightTheme":"github-dark"
 }
